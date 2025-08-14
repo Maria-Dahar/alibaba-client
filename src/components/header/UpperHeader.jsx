@@ -72,7 +72,11 @@ function UpperHeader({
         <Logo />
         </>) }
       
-      
+      <Logo className={`hidden md:flex ${
+          location.pathname === '/' || location.pathname.startsWith('/product/')
+            ? 'md:hidden'
+            : 'md:flex'
+        }`} />
       
         </div>
 

@@ -55,7 +55,7 @@ export default function SearchResultsPage() {
   return (
     <div className='lg:px-20 py-3 lg:py-0 '>
       <Breadcrumbs  
-      paths={breadcrumbPaths}
+      
       className='hidden lg:block pb-1 mb-4 px-3 py-4'/>
       
       <div className='relative w-full flex items-start'>

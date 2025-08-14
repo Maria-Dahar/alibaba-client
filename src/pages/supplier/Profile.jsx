@@ -9,6 +9,7 @@ import { LuBadgeInfo } from "react-icons/lu";
 import { FaPen } from "react-icons/fa6";
 import { MdOutlineDescription } from "react-icons/md";
 import { useSelector } from 'react-redux';
+import Avatar3 from '../../assets/Avatar3.jpg'
 
 
 function Profile({ className }) {
@@ -16,20 +17,24 @@ function Profile({ className }) {
     const navigate = useNavigate()
     const [isActive, setIsActive] = useState('info')
     const supplier = useSelector(state => state.auth.supplier);
+    console.log("Supplier in profile", supplier)
 
   return (
 
-    <div className={`${className} mt-20 px-16 min-h-[calc(100vh-80px)]`}>
+    <div className={`${className} mt-20 px-5 lg:px-16 min-h-[calc(100vh-80px)]`}>
+
     {/* Upper div */}
-    <div className='w-full flex gap-10'>
+    <div className='w-full flex flex-col md:flex-row gap-10'>
 
         {/* Image*/}
-        <div className='w-1/4 h-60 bg-gray-100'>
-            <img src="" alt="Image" />
+        <div className='w-full md:w-1/4 h-60 bg-gray-100'>
+            <img src={supplier?.avatar || Avatar3} 
+            alt="Image"
+             className="object-cover w-full h-full" />
         </div>
 
         
-        <div className='w-2/3'>
+        <div className='w-full md:w-2/3'>
             {/* Name */}
             <div className='w-full flex gap-4 items-start justify-between'>
                 <div className='flex items-start'>
@@ -37,14 +42,16 @@ function Profile({ className }) {
                 <div>
                 <h1
                 className='text-2xl font-semibold'>
-                    Kaif Sasoli
+                    {supplier?.firstName} {supplier?.lastName}
                 </h1>
                  <p className='text-blue-500'>Ecommerce Supplier</p>
                 </div>
-                <p className='pt-2 text-sm flex gap-2 items-center text-textcolor'>
-                    <FaLocationDot /> 
-                    Paksitan, Sindh
-                </p>
+                {supplier?.address && (
+  <p className="pt-2 text-sm flex gap-2 items-center text-textcolor">
+    <FaLocationDot />
+    {supplier.address}
+  </p>
+)}
                 </div>
 
                 <button 
@@ -123,9 +130,9 @@ function Profile({ className }) {
             <div>
 
                 {isActive === 'info' && (
-                    <div className='py-5 flex gap-10'>
+                    <div className='py-5 flex flex-col md:flex-row gap-10'>
 
-                        <div className='w-1/3'>
+                        <div className='w-full md:w-1/3'>
 
                       {/* Upper Line */}
                         <div className='pb-5 flex items-center'>
@@ -138,7 +145,7 @@ function Profile({ className }) {
                        {/* Items */}
                         <div className='flex items-center justify-between'>
                             <h1 className='text-base font-medium'>
-                                Ecommrace Shop 
+                                Ecommerce Shop 
                                 <span className='text-sm block text-textcolor font-light'>
                                     Lorem ipsum dolor sit consectetur adipisicing
                                 </span>
@@ -162,17 +169,17 @@ function Profile({ className }) {
                             <tbody>
                               <tr>
                                 <td className="font-medium text-gray-700">Phone:</td>
-                                <td>+92 333 3333333</td>
+                                {(supplier?.contact) ? `+${supplier?.contact}` :  'No'}
                               </tr>                         
 
                               <tr>
                                 <td className="break-words whitespace-normal max-w-xs">Address:</td>
-                                <td>House #123, Main Boulevard, Lahore, Pakistan</td>
+                                {(supplier?.address) ? supplier?.address : 'No'}
                               </tr>                         
 
                               <tr>
                                 <td className="font-medium text-gray-700">Email:</td>
-                                <td className="text-blue-500">ecommerce.shop@gmail.com</td>
+                                <td className="text-blue-500">{(supplier?.email) ? supplier?.email : 'No'}</td>
                               </tr>                         
 
                               <tr>
@@ -199,7 +206,7 @@ function Profile({ className }) {
                         </div>
 
                         <div className='overflow-y-auto max-h-[calc(100vh-80px)]'>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo libero consectetur perspiciatis ducimus? Ab repellat labore, cum molestiae quo veritatis. Dolore ducimus laborum soluta corporis ullam enim provident, cumque incidunt!</p>
+                            <p>{(supplier?.description) ? supplier?.description : 'Not described'}</p>
                         </div>
                     </div>
                 ) }

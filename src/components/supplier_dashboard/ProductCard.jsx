@@ -39,7 +39,7 @@ function ProductCard({
    
   return (
             <div 
-            onClick={() => { navigate('/product') }}
+            onClick={() => { navigate(`/product/${productId}`) }}
             className={`w-full border-[1px] border-gray-200 p-2 rounded-md flex gap-4  cursor-pointer
             bg-white shadow-md ${view === 'grid' ? 'flex-col' : 'flex-row'} ${className}`}>
         

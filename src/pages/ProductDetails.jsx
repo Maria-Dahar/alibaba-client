@@ -68,7 +68,7 @@ function ProductDetails() {
         
          <Breadcrumbs 
          className='py-4 px-3 md:px-0'
-         paths={breadcrumbPaths}/>
+         />
 
        {loading ? (
         // Loader while fetching

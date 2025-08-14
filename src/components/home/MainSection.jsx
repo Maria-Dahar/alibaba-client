@@ -22,8 +22,10 @@ function MainSection({
           <div className='hidden lg:block basis-1/4'>
              <ul className='flex flex-col text-sm gap-1'>
                  {categories.map((category, index) => (
-                 <li key={index} className="rounded-sm py-1 px-">
-                     <Link to="">{category}</Link>
+                 <li key={index} className="rounded-sm py-1 px- hover:bg-gray-100">
+                    <Link to={`/search?q=${encodeURIComponent(category)}`}>
+  {category} {/* This is the clickable text */}
+</Link>
                  </li>
           ))}
              </ul>

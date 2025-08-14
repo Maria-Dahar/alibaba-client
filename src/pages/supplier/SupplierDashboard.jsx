@@ -47,10 +47,10 @@ function SupplierDashboard() {
     }
 
   return (
-    <div className='mt-24 mx-10 rounded-xl'>
+    <div className='mt-24 mx-2 lg:mx-10 rounded-xl'>
         
         {/* Cards */}
-        <div className='flex gap-10 py-2 px-4 bg-white rounded-xl'>
+        <div className='flex flex-col md:flex-row gap-3 md:gap-10 py-2 px-4 bg-white rounded-xl'>
            
            {/* Shipped Orders */}
            <div 
@@ -114,7 +114,7 @@ function SupplierDashboard() {
         <div className='flex gap-6 mt-5'>
 
           {/* Left Div */}
-          <div className='w-1/2'>
+          <div className='w-full lg:w-1/2'>
 
             {/* Inbox */}
             <div className='py-2 shadow-md rounded-xl bg-white'>
@@ -174,7 +174,7 @@ function SupplierDashboard() {
           </div>
         
          {/* Right Div */}
-          <div className='px-5 w-1/2 bg-white rounded-xl shadow-md'>
+          <div className='hidden md:block px-5 w-1/2 bg-white rounded-xl shadow-md'>
             
             <div className='pt-2 pb-10'>
               <h1 className='text-xl font-bold' >Today’s trends</h1>
